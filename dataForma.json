@@ -1,0 +1,36 @@
+{
+    "type": "FeatureCollection",
+    "version": "draft",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.436189,
+                    48.864222
+                ]
+            },
+            "properties": {
+                "label": "104 Avenue de la Résistance 93100 Montreuil",
+                "score": 0.7214963636363636,
+                "housenumber": "104",
+                "id": "93048_8185_00104",
+                "name": "104 Avenue de la Résistance",
+                "postcode": "93100",
+                "citycode": "93048",
+                "x": 658637.48,
+                "y": 6862835.49,
+                "city": "Montreuil",
+                "context": "93, Seine-Saint-Denis, Île-de-France",
+                "type": "housenumber",
+                "importance": 0.73646,
+                "street": "Avenue de la Résistance"
+            }
+        }
+    ],
+    "attribution": "BAN",
+    "licence": "ETALAB-2.0",
+    "query": "104 rue de la resistance montreuil 93100",
+    "limit": 5
+}
