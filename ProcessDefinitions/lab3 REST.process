@@ -19,11 +19,25 @@
     </pd:startType>
     <pd:startX>41</pd:startX>
     <pd:startY>201</pd:startY>
-    <pd:returnBindings/>
+    <pd:returnBindings>
+        <root/>
+    </pd:returnBindings>
     <pd:endName>End</pd:endName>
+    <pd:endType/>
     <pd:endX>1228</pd:endX>
     <pd:endY>206</pd:endY>
-    <pd:errorSchemas/>
+    <pd:errorSchemas>
+        <FaultMessage>
+            <xsd:element name="Error">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Message" type="xsd:string"/>
+                        <xsd:element name="MsgCode" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </FaultMessage>
+    </pd:errorSchemas>
     <pd:processVariables/>
     <pd:targetNamespace>http://xmlns.example.com/1618321519140</pd:targetNamespace>
     <pd:activity name="Parse JSON result">
@@ -389,8 +403,8 @@
     <pd:activity name="Catch">
         <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
         <pd:resourceType>ae.activities.catch</pd:resourceType>
-        <pd:x>1091</pd:x>
-        <pd:y>327</pd:y>
+        <pd:x>745</pd:x>
+        <pd:y>515</pd:y>
         <pd:handler>true</pd:handler>
         <config>
             <catchAll>true</catchAll>
@@ -400,8 +414,8 @@
     <pd:activity name="Logging Errors">
         <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
         <pd:resourceType>ae.process.subprocess</pd:resourceType>
-        <pd:x>1227</pd:x>
-        <pd:y>327</pd:y>
+        <pd:x>1230</pd:x>
+        <pd:y>388</pd:y>
         <config>
             <processName>/ProcessDefinitions/LoggingProcess.process</processName>
         </config>
@@ -416,9 +430,18 @@
                 <ns3:status>
                     <xsl:value-of select="&quot;error&quot;"/>
                 </ns3:status>
-                <ns3:logmessage>
-                    <xsl:value-of select="if(string-length( $Catch/exceptiondata/*)>254) then substring($Catch/exceptiondata/*, 1, 254) else $Catch/exceptiondata/*"/>
-                </ns3:logmessage>
+                <xsl:choose>
+                    <xsl:when test="string-length($CatchSpecificError/Error/Message)>0">
+                        <ns3:logmessage>
+                            <xsl:value-of select="if(string-length( $CatchSpecificError/Error/Message)>254) then substring($CatchSpecificError/Error/MsgCode, 1, 254) else $CatchSpecificError/Error/Message"/>
+                        </ns3:logmessage>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <ns3:logmessage>
+                            <xsl:value-of select="if(string-length( $Catch/exceptiondata/*)>254) then substring($Catch/exceptiondata/*, 1, 254) else $Catch/exceptiondata/*"/>
+                        </ns3:logmessage>
+                    </xsl:otherwise>
+                </xsl:choose>
             </ns3:LogInfo>
         </pd:inputBindings>
     </pd:activity>
@@ -450,10 +473,10 @@
     <pd:activity name="Generate Error HTTP GET address">
         <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
         <pd:resourceType>ae.activities.throw</pd:resourceType>
-        <pd:x>286</pd:x>
-        <pd:y>365</pd:y>
+        <pd:x>288</pd:x>
+        <pd:y>348</pd:y>
         <config>
-            <faultName/>
+            <faultName>FaultMessage</faultName>
         </config>
         <pd:inputBindings>
             <ns4:ActivityInput>
@@ -506,6 +529,29 @@
                 </ns3:logmessage>
             </ns3:LogInfo>
         </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Generate Error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>134</pd:x>
+        <pd:y>324</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <ns4:ActivityInput/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="CatchSpecificError">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>742</pd:x>
+        <pd:y>388</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <fault>localname=Error</fault>
+        </config>
+        <pd:inputBindings/>
     </pd:activity>
     <pd:transition>
         <pd:from>REST GET Address</pd:from>
@@ -577,6 +623,20 @@
     <pd:transition>
         <pd:from>Initial Log</pd:from>
         <pd:to>REST GET Address</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>REST GET Address</pd:from>
+        <pd:to>Generate Error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>error</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>CatchSpecificError</pd:from>
+        <pd:to>Logging Errors</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
         <pd:conditionType>always</pd:conditionType>
