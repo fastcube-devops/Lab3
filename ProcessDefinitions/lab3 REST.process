@@ -207,7 +207,7 @@
             <pd:to>Parse XML result</pd:to>
             <pd:xpathDescription>ok</pd:xpathDescription>
             <pd:lineType>Default</pd:lineType>
-            <pd:lineColor>-16738048</pd:lineColor>
+            <pd:lineColor>-16777216</pd:lineColor>
             <pd:conditionType>xpath</pd:conditionType>
             <pd:xpath>$REST-GET-Weather/ns:RESTOutput/StatusCode=200</pd:xpath>
         </pd:transition>
@@ -215,7 +215,7 @@
             <pd:from>REST GET Weather</pd:from>
             <pd:to>Generate Error HTTP GET weather</pd:to>
             <pd:lineType>Multiple Bends</pd:lineType>
-            <pd:lineColor>-65536</pd:lineColor>
+            <pd:lineColor>-26368</pd:lineColor>
             <pd:conditionType>otherwise</pd:conditionType>
         </pd:transition>
         <pd:activity name="REST GET Weather">
@@ -512,7 +512,7 @@
         <pd:to>Parse JSON result</pd:to>
         <pd:xpathDescription>ok</pd:xpathDescription>
         <pd:lineType>Default</pd:lineType>
-        <pd:lineColor>-13395712</pd:lineColor>
+        <pd:lineColor>-16777216</pd:lineColor>
         <pd:conditionType>xpath</pd:conditionType>
         <pd:xpath>$REST-GET-Address/ns:RESTOutput/StatusCode=200</pd:xpath>
     </pd:transition>
@@ -520,7 +520,7 @@
         <pd:from>Parse JSON result</pd:from>
         <pd:to>Generate Error adress not found</pd:to>
         <pd:lineType>Default</pd:lineType>
-        <pd:lineColor>-65536</pd:lineColor>
+        <pd:lineColor>-26368</pd:lineColor>
         <pd:conditionType>otherwise</pd:conditionType>
     </pd:transition>
     <pd:transition>
@@ -564,7 +564,7 @@
         <pd:from>REST GET Address</pd:from>
         <pd:to>Generate Error HTTP GET address</pd:to>
         <pd:lineType>Default</pd:lineType>
-        <pd:lineColor>-65536</pd:lineColor>
+        <pd:lineColor>-26368</pd:lineColor>
         <pd:conditionType>otherwise</pd:conditionType>
     </pd:transition>
     <pd:transition>
