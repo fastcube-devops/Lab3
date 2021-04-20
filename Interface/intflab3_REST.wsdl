@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.com/1618918793744" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx0="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" targetNamespace="http://www.example.com/1618918793744">
+    <import namespace="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" location="../Schemas/Start.xsd"/>
+    <message name="root">
+        <part element="pfx0:root" name="parameters"/>
+    </message>
+    <portType name="portType">
+        <operation name="lab3_sp_RESTOp">
+            <input message="tns:root"/>
+        </operation>
+    </portType>
+</definitions>

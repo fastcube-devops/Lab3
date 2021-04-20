@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://xmlns.lab3.com/1618918807546" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.example.com/1618918793744" xmlns:pfx3="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" schemaLocation="/Schemas/Start.xsd"/>
+    <wsdl:import namespace="http://www.example.com/1618918793744" location="/Interface/intflab3_REST.wsdl"/>
+    <wsdl:import namespace="http://xmlns.lab3.com/1618918807546" location="/contract/lab3_wsdl_concret.wsdl"/>
+    <pd:name>ProcessDefinitions/Lab3 SOAP.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx3:root"/>
+    <pd:startX>137</pd:startX>
+    <pd:startY>211</pd:startY>
+    <pd:returnBindings/>
+    <pd:endName>End</pd:endName>
+    <pd:endX>553</pd:endX>
+    <pd:endY>218</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1618919131098</pd:targetNamespace>
+    <pd:activity name="SOAPRequestReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReceiveActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReceiveUI</pd:resourceType>
+        <pd:x>330</pd:x>
+        <pd:y>213</pd:y>
+        <config>
+            <timeout>0</timeout>
+            <soapAttachmentStyle>SwA</soapAttachmentStyle>
+            <timeoutType>Seconds</timeoutType>
+            <service>pfx:intflab3_REST-service</service>
+            <servicePort>intfwslab3_RESTEndpoint0</servicePort>
+            <operation>lab3_sp_RESTOp</operation>
+            <soapAction>/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint0/lab3_sp_RESTOp</soapAction>
+            <endpointURL>http://localhost:7575/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint0</endpointURL>
+            <authScheme>NONE</authScheme>
+        </config>
+        <pd:inputBindings>
+            <inputMessage>
+                <xsl:copy-of select="$Start/pfx3:root"/>
+            </inputMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>SOAPRequestReply</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPRequestReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>
