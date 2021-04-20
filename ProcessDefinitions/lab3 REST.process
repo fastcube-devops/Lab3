@@ -1,28 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/dataForma.xsd" xmlns:pfx2="http://www.tibco.com/schemas/lab/JSON_GEN_Schemas/Schema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:pfx3="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/addressSchema.xsd" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherDada.xsd" xmlns:pfx5="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherSchema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/pe/EngineTypes" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:ns4="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:ns3="http://www.tibco.com/schemas/Logging/Schemas/Schema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns5="http://schemas.tibco.com/bw/plugins/xml/5.0/xmlExceptions" xmlns:pd="http://xmlns.tibco.com/bw/process/2003">
+<pd:ProcessDefinition xmlns:pfx6="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/dataForma.xsd" xmlns:pfx2="http://www.tibco.com/schemas/lab/JSON_GEN_Schemas/Schema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:pfx3="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/addressSchema.xsd" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherDada.xsd" xmlns:pfx5="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherSchema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/pe/EngineTypes" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:ns4="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:ns3="http://www.tibco.com/schemas/Logging/Schemas/Schema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns5="http://schemas.tibco.com/bw/plugins/xml/5.0/xmlExceptions" xmlns:pd="http://xmlns.tibco.com/bw/process/2003">
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/dataForma.xsd" schemaLocation="/JSON_GEN_Schemas/dataForma.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/lab/JSON_GEN_Schemas/Schema.xsd" schemaLocation="/JSON_GEN_Schemas/adress_Costom.xsd"/>
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/addressSchema.xsd" schemaLocation="/JSON_GEN_Schemas/addressSchema.xsd"/>
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherDada.xsd" schemaLocation="/JSON_GEN_Schemas/waetherDada.xsd"/>
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherSchema.xsd" schemaLocation="/JSON_GEN_Schemas/waetherSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" schemaLocation="/Schemas/Start.xsd"/>
     <pd:name>ProcessDefinitions/lab3 REST.process</pd:name>
     <pd:startName>Start</pd:startName>
-    <pd:startType>
-        <xsd:element name="root">
-            <xsd:complexType>
-                <xsd:sequence>
-                    <xsd:element name="adresse" type="xsd:string"/>
-                    <xsd:element name="postcode" type="xsd:int" minOccurs="0"/>
-                </xsd:sequence>
-            </xsd:complexType>
-        </xsd:element>
-    </pd:startType>
+    <pd:startType ref="pfx6:root"/>
     <pd:startX>41</pd:startX>
     <pd:startY>201</pd:startY>
     <pd:returnBindings>
-        <root/>
+        <root>
+            <xsl:for-each select="$Parse-XML-result/current">
+                <current>
+                    <xsl:for-each select="city">
+                        <city>
+                            <xsl:if test="@id">
+                                <xsl:attribute name="id">
+                                    <xsl:value-of select="@id"/>
+                                </xsl:attribute>
+                            </xsl:if>
+                            <xsl:if test="@name">
+                                <xsl:attribute name="name">
+                                    <xsl:value-of select="@name"/>
+                                </xsl:attribute>
+                            </xsl:if>
+                            <coord>
+                                <xsl:if test="coord/@lon">
+                                    <xsl:attribute name="lon">
+                                        <xsl:value-of select="coord/@lon"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:if test="coord/@lat">
+                                    <xsl:attribute name="lat">
+                                        <xsl:value-of select="coord/@lat"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:value-of select="coord"/>
+                            </coord>
+                            <country>
+                                <xsl:value-of select="country"/>
+                            </country>
+                            <timezone>
+                                <xsl:value-of select="timezone"/>
+                            </timezone>
+                            <sun>
+                                <xsl:if test="sun/@rise">
+                                    <xsl:attribute name="rise">
+                                        <xsl:value-of select="sun/@rise"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:if test="sun/@set">
+                                    <xsl:attribute name="set">
+                                        <xsl:value-of select="sun/@set"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:value-of select="sun"/>
+                            </sun>
+                        </city>
+                    </xsl:for-each>
+                    <temperature>
+                        <xsl:if test="temperature/@value">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="temperature/@value"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="temperature/@min">
+                            <xsl:attribute name="min">
+                                <xsl:value-of select="temperature/@min"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="temperature/@max">
+                            <xsl:attribute name="max">
+                                <xsl:value-of select="temperature/@max"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="temperature/@unit">
+                            <xsl:attribute name="unit">
+                                <xsl:value-of select="temperature/@unit"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="temperature"/>
+                    </temperature>
+                    <feels_like>
+                        <xsl:if test="feels_like/@value">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="feels_like/@value"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="feels_like/@unit">
+                            <xsl:attribute name="unit">
+                                <xsl:value-of select="feels_like/@unit"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="feels_like"/>
+                    </feels_like>
+                    <humidity>
+                        <xsl:if test="humidity/@value">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="humidity/@value"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="humidity/@unit">
+                            <xsl:attribute name="unit">
+                                <xsl:value-of select="humidity/@unit"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="humidity"/>
+                    </humidity>
+                    <pressure>
+                        <xsl:if test="pressure/@value">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="pressure/@value"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="pressure/@unit">
+                            <xsl:attribute name="unit">
+                                <xsl:value-of select="pressure/@unit"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="pressure"/>
+                    </pressure>
+                    <xsl:for-each select="wind">
+                        <wind>
+                            <speed>
+                                <xsl:if test="speed/@value">
+                                    <xsl:attribute name="value">
+                                        <xsl:value-of select="speed/@value"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:if test="speed/@unit">
+                                    <xsl:attribute name="unit">
+                                        <xsl:value-of select="speed/@unit"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:if test="speed/@name">
+                                    <xsl:attribute name="name">
+                                        <xsl:value-of select="speed/@name"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:value-of select="speed"/>
+                            </speed>
+                            <gusts>
+                                <xsl:value-of select="gusts"/>
+                            </gusts>
+                            <direction>
+                                <xsl:if test="direction/@value">
+                                    <xsl:attribute name="value">
+                                        <xsl:value-of select="direction/@value"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:if test="direction/@code">
+                                    <xsl:attribute name="code">
+                                        <xsl:value-of select="direction/@code"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:if test="direction/@name">
+                                    <xsl:attribute name="name">
+                                        <xsl:value-of select="direction/@name"/>
+                                    </xsl:attribute>
+                                </xsl:if>
+                                <xsl:value-of select="direction"/>
+                            </direction>
+                        </wind>
+                    </xsl:for-each>
+                    <clouds>
+                        <xsl:if test="clouds/@value">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="clouds/@value"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="clouds/@name">
+                            <xsl:attribute name="name">
+                                <xsl:value-of select="clouds/@name"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="clouds"/>
+                    </clouds>
+                    <visibility>
+                        <xsl:if test="visibility/@value">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="visibility/@value"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="visibility"/>
+                    </visibility>
+                    <precipitation>
+                        <xsl:if test="precipitation/@mode">
+                            <xsl:attribute name="mode">
+                                <xsl:value-of select="precipitation/@mode"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="precipitation"/>
+                    </precipitation>
+                    <weather>
+                        <xsl:if test="weather/@number">
+                            <xsl:attribute name="number">
+                                <xsl:value-of select="weather/@number"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="weather/@value">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="weather/@value"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:if test="weather/@icon">
+                            <xsl:attribute name="icon">
+                                <xsl:value-of select="weather/@icon"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="weather"/>
+                    </weather>
+                    <lastupdate>
+                        <xsl:if test="lastupdate/@value">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="lastupdate/@value"/>
+                            </xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="lastupdate"/>
+                    </lastupdate>
+                </current>
+            </xsl:for-each>
+        </root>
     </pd:returnBindings>
     <pd:endName>End</pd:endName>
+    <pd:endType/>
     <pd:endX>1229</pd:endX>
     <pd:endY>206</pd:endY>
     <pd:errorSchemas>
@@ -169,10 +373,10 @@
                 <ns:Parameters>
                     <Query>
                         <q>
-                            <xsl:value-of select="$Start/root/adresse"/>
+                            <xsl:value-of select="$Start/pfx6:root/pfx6:address"/>
                         </q>
                         <postcode>
-                            <xsl:value-of select="$Start/root/postcode"/>
+                            <xsl:value-of select="$Start/pfx6:root/pfx6:postcode"/>
                         </postcode>
                     </Query>
                 </ns:Parameters>
@@ -441,6 +645,9 @@
                         </ns3:logmessage>
                     </xsl:otherwise>
                 </xsl:choose>
+                <ns3:idProcess>
+                    <xsl:value-of select="$_processContext/ns2:ProcessContext/ProcessId"/>
+                </ns3:idProcess>
             </ns3:LogInfo>
         </pd:inputBindings>
     </pd:activity>
@@ -466,6 +673,9 @@
                 <ns3:logmessage>
                     <xsl:value-of select="concat(&quot;End of process : &quot;,$_processContext/ns2:ProcessContext/ProcessId)"/>
                 </ns3:logmessage>
+                <ns3:idProcess>
+                    <xsl:value-of select="$_processContext/ns2:ProcessContext/ProcessId"/>
+                </ns3:idProcess>
             </ns3:LogInfo>
         </pd:inputBindings>
     </pd:activity>
@@ -508,7 +718,7 @@
         <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
         <pd:resourceType>ae.process.subprocess</pd:resourceType>
         <pd:x>157</pd:x>
-        <pd:y>201</pd:y>
+        <pd:y>202</pd:y>
         <config>
             <processName>/ProcessDefinitions/LoggingProcess.process</processName>
         </config>
@@ -526,6 +736,9 @@
                 <ns3:logmessage>
                     <xsl:value-of select="concat(&quot;Start process  : &quot;,$_processContext/ns2:ProcessContext/ProcessId)"/>
                 </ns3:logmessage>
+                <ns3:idProcess>
+                    <xsl:value-of select="$_processContext/ns2:ProcessContext/ProcessId"/>
+                </ns3:idProcess>
             </ns3:LogInfo>
         </pd:inputBindings>
     </pd:activity>
