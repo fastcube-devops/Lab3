@@ -1,0 +1,132 @@
+{
+    "type": "FeatureCollection",
+    "version": "draft",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.222566,
+                    48.888404
+                ]
+            },
+            "properties": {
+                "label": "100 Avenue Pablo Picasso 92000 Nanterre",
+                "score": 0.8852254545454545,
+                "housenumber": "100",
+                "id": "92050_7010_00100",
+                "name": "100 Avenue Pablo Picasso",
+                "postcode": "92000",
+                "citycode": "92050",
+                "x": 642992.5,
+                "y": 6865657.42,
+                "city": "Nanterre",
+                "context": "92, Hauts-de-Seine, Île-de-France",
+                "type": "housenumber",
+                "importance": 0.73748,
+                "street": "Avenue Pablo Picasso"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.399658,
+                    43.583389
+                ]
+            },
+            "properties": {
+                "label": "Avenue Pablo Picasso 31100 Toulouse",
+                "score": 0.7445656916996046,
+                "id": "31555_6451",
+                "name": "Avenue Pablo Picasso",
+                "postcode": "31100",
+                "citycode": "31555",
+                "x": 570713.22,
+                "y": 6277346.83,
+                "city": "Toulouse",
+                "context": "31, Haute-Garonne, Occitanie",
+                "type": "street",
+                "importance": 0.75544
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.151226,
+                    49.502279
+                ]
+            },
+            "properties": {
+                "label": "Avenue Pablo Picasso 76600 Le Havre",
+                "score": 0.7376438735177866,
+                "id": "76351_6037",
+                "name": "Avenue Pablo Picasso",
+                "postcode": "76600",
+                "citycode": "76351",
+                "x": 493610.62,
+                "y": 6937382.46,
+                "city": "Le Havre",
+                "context": "76, Seine-Maritime, Normandie",
+                "type": "street",
+                "importance": 0.6793
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.918523,
+                    45.774785
+                ]
+            },
+            "properties": {
+                "label": "Avenue Pablo Picasso 69120 Vaulx-en-Velin",
+                "score": 0.7343838735177864,
+                "id": "69256_0759",
+                "name": "Avenue Pablo Picasso",
+                "postcode": "69120",
+                "citycode": "69256",
+                "x": 849073.15,
+                "y": 6521274.71,
+                "city": "Vaulx-en-Velin",
+                "context": "69, Rhône, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.64344
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.067474,
+                    45.051199
+                ]
+            },
+            "properties": {
+                "label": "Avenue Pablo Picasso 26100 Romans-sur-Isère",
+                "score": 0.7336902371541502,
+                "id": "26281_2297",
+                "name": "Avenue Pablo Picasso",
+                "postcode": "26100",
+                "citycode": "26281",
+                "x": 862748.18,
+                "y": 6441236.1,
+                "city": "Romans-sur-Isère",
+                "context": "26, Drôme, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.63581
+            }
+        }
+    ],
+    "attribution": "BAN",
+    "licence": "ETALAB-2.0",
+    "query": " 100 avenue pablo picasso",
+    "limit": 5
+}

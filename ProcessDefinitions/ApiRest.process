@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pfx6="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd2" xmlns:pfx="http://www.tibco.com/schemas/Untitled3/Schema/Schema.xsd" xmlns:pfx2="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/adress.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:pfx3="http://www.tibco.com/schemas/Logging/Schemas/Schema.xsd" xmlns:pfx4="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd" xmlns:pfx5="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:ns1="http://www.tibco.com/pe/EngineTypes" xmlns:ns3="http://schemas.tibco.com/bw/plugins/xml/5.0/RESTJSONExceptions" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003">
+    <xsd:import namespace="http://www.tibco.com/schemas/Untitled3/Schema/Schema.xsd" schemaLocation="/Schema/Schema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/adress.xsd" schemaLocation="/JSON_GEN_Schemas/adress.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" schemaLocation="/Schema/q.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd2" schemaLocation="/Schema/ShcemaWetherEnd.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd" schemaLocation="/Schema/schemaAllDataWeather.xsd"/>
+    <pd:name>ProcessDefinitions/ApiRest.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx5:q"/>
+    <pd:startX>54</pd:startX>
+    <pd:startY>218</pd:startY>
+    <pd:returnBindings>
+        <pfx4:current>
+            <pfx4:temperature>
+                <xsl:if test="$Parse-XML/pfx4:current/pfx4:temperature/@value">
+                    <xsl:attribute name="value">
+                        <xsl:value-of select="$Parse-XML/pfx4:current/pfx4:temperature/@value"/>
+                    </xsl:attribute>
+                </xsl:if>
+                <xsl:if test="$Parse-XML/pfx4:current/pfx4:temperature/@min">
+                    <xsl:attribute name="min">
+                        <xsl:value-of select="$Parse-XML/pfx4:current/pfx4:temperature/@min"/>
+                    </xsl:attribute>
+                </xsl:if>
+                <xsl:if test="$Parse-XML/pfx4:current/pfx4:temperature/@max">
+                    <xsl:attribute name="max">
+                        <xsl:value-of select="$Parse-XML/pfx4:current/pfx4:temperature/@max"/>
+                    </xsl:attribute>
+                </xsl:if>
+                <xsl:if test="$Parse-XML/pfx4:current/pfx4:temperature/@unit">
+                    <xsl:attribute name="unit">
+                        <xsl:value-of select="$Parse-XML/pfx4:current/pfx4:temperature/@unit"/>
+                    </xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="$Parse-XML/pfx4:current/pfx4:temperature"/>
+            </pfx4:temperature>
+        </pfx4:current>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx4:current"/>
+    <pd:endX>1110</pd:endX>
+    <pd:endY>220</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1618556496495</pd:targetNamespace>
+    <pd:activity name="getAdrees">
+        <pd:type>com.tibco.plugin.json.activities.RestActivity</pd:type>
+        <pd:resourceType>ae.activities.RestActivity</pd:resourceType>
+        <pd:x>196</pd:x>
+        <pd:y>219</pd:y>
+        <config>
+            <enableProtocolUI>None</enableProtocolUI>
+            <restMethodUI>GET</restMethodUI>
+            <restResponseType>JSON</restResponseType>
+            <authChoiceUI>No Authentication</authChoiceUI>
+            <WADLPaths/>
+            <WADLBaseURL/>
+            <restMethodIDUI/>
+            <restURI>https://api-adresse.data.gouv.fr/search/?</restURI>
+            <richOutputEnableUI>false</richOutputEnableUI>
+            <restInputReferNode>
+                <xsd:element name="Parameters">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="Query" minOccurs="0">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="q" type="xsd:string"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="Header" minOccurs="0">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="param" type="xsd:string" minOccurs="0"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="Body" minOccurs="0">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="Form" minOccurs="0">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="param" type="xsd:string" minOccurs="0"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="Text" minOccurs="0">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="type" type="xsd:string" minOccurs="0"/>
+                                                    <xsd:element name="content" type="xsd:string" minOccurs="0"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="Binary" minOccurs="0">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="type" type="xsd:string" minOccurs="0"/>
+                                                    <xsd:element name="content" type="xsd:base64Binary" minOccurs="0"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="Multipart" minOccurs="0" maxOccurs="unbounded">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="content-disposition" type="xsd:string" minOccurs="0"/>
+                                                    <xsd:element name="name" type="xsd:string" minOccurs="0"/>
+                                                    <xsd:element name="filename" type="xsd:string" minOccurs="0"/>
+                                                    <xsd:element name="content-type" type="xsd:string" minOccurs="0"/>
+                                                    <xsd:element name="content-id" type="xsd:string" minOccurs="0"/>
+                                                    <xsd:element name="content" minOccurs="0">
+                                                        <xsd:complexType>
+                                                            <xsd:choice>
+                                                                <xsd:element name="binary" type="xsd:base64Binary"/>
+                                                                <xsd:element name="text" type="xsd:string"/>
+                                                                <xsd:element name="fileName" type="xsd:string"/>
+                                                            </xsd:choice>
+                                                        </xsd:complexType>
+                                                    </xsd:element>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </restInputReferNode>
+            <restOutputReferNode>
+                <xsd:element name="header">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="Server" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Location" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Allow" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Date" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Set-Cookie" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Pragma" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Content-Type" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Content-Length" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Content-Encoding" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Content-Range" type="xsd:string" minOccurs="0"/>
+                            <xsd:element name="Last-Modifie" type="xsd:string" minOccurs="0"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </restOutputReferNode>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInput>
+                <ns:Parameters>
+                    <Query>
+                        <q>
+                            <xsl:value-of select="$Start/pfx5:q"/>
+                        </q>
+                    </Query>
+                </ns:Parameters>
+            </ns:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:group name="Group">
+        <pd:type>com.tibco.pe.core.LoopGroup</pd:type>
+        <pd:resourceType>ae.process.group</pd:resourceType>
+        <pd:x>668</pd:x>
+        <pd:y>85</pd:y>
+        <pd:width>334</pd:width>
+        <pd:height>258</pd:height>
+        <pd:collapsedWidth>57</pd:collapsedWidth>
+        <pd:collapsedHeight>70</pd:collapsedHeight>
+        <pd:groupVariables/>
+        <pd:joinToggle>inherit</pd:joinToggle>
+        <config>
+            <pd:groupType>inputLoop</pd:groupType>
+            <pd:serializable>false</pd:serializable>
+            <pd:over>$Parse-JSON/ns:ActivityOutputClass/JSON/features</pd:over>
+            <pd:iterationElementSlot>adresse</pd:iterationElementSlot>
+            <pd:indexSlot>i</pd:indexSlot>
+            <pd:activityOutputName/>
+            <pd:accumulateOutput>false</pd:accumulateOutput>
+        </config>
+        <pd:inputBindings/>
+        <pd:expanded>true</pd:expanded>
+        <pd:transition>
+            <pd:from>start</pd:from>
+            <pd:to>get weather</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>Parse XML</pd:from>
+            <pd:to>end</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>get weather</pd:from>
+            <pd:to>get weather Error</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>error</pd:conditionType>
+        </pd:transition>
+        <pd:transition>
+            <pd:from>get weather</pd:from>
+            <pd:to>Parse XML</pd:to>
+            <pd:lineType>Default</pd:lineType>
+            <pd:lineColor>-16777216</pd:lineColor>
+            <pd:conditionType>always</pd:conditionType>
+        </pd:transition>
+        <pd:activity name="get weather">
+            <pd:type>com.tibco.plugin.json.activities.RestActivity</pd:type>
+            <pd:resourceType>ae.activities.RestActivity</pd:resourceType>
+            <pd:x>794</pd:x>
+            <pd:y>167</pd:y>
+            <config>
+                <enableProtocolUI>None</enableProtocolUI>
+                <restMethodUI>GET</restMethodUI>
+                <restResponseType>XML</restResponseType>
+                <authChoiceUI>No Authentication</authChoiceUI>
+                <WADLPaths/>
+                <WADLBaseURL/>
+                <restMethodIDUI/>
+                <restURI>http://api.openweathermap.org/data/2.5/weather?</restURI>
+                <richOutputEnableUI>true</richOutputEnableUI>
+                <restInputReferNode>
+                    <xsd:element name="Parameters">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="Query" minOccurs="0">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="lat" type="xsd:string"/>
+                                            <xsd:element name="lon" type="xsd:string"/>
+                                            <xsd:element name="appid" type="xsd:string"/>
+                                            <xsd:element name="mode" type="xsd:string"/>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Header" minOccurs="0">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="param" type="xsd:string" minOccurs="0"/>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Multipart" minOccurs="0" maxOccurs="unbounded">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="content-disposition" type="xsd:string" minOccurs="0"/>
+                                            <xsd:element name="name" type="xsd:string" minOccurs="0"/>
+                                            <xsd:element name="filename" type="xsd:string" minOccurs="0"/>
+                                            <xsd:element name="content-type" type="xsd:string" minOccurs="0"/>
+                                            <xsd:element name="content-id" type="xsd:string" minOccurs="0"/>
+                                            <xsd:element name="content" minOccurs="0">
+                                                <xsd:complexType>
+                                                    <xsd:choice>
+                                                        <xsd:element name="binary" type="xsd:base64Binary"/>
+                                                        <xsd:element name="text" type="xsd:string"/>
+                                                        <xsd:element name="fileName" type="xsd:string"/>
+                                                    </xsd:choice>
+                                                </xsd:complexType>
+                                            </xsd:element>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Body" minOccurs="0">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="Form" minOccurs="0">
+                                                <xsd:complexType>
+                                                    <xsd:sequence>
+                                                        <xsd:element name="param" type="xsd:string" minOccurs="0"/>
+                                                    </xsd:sequence>
+                                                </xsd:complexType>
+                                            </xsd:element>
+                                            <xsd:element name="Text" minOccurs="0">
+                                                <xsd:complexType>
+                                                    <xsd:sequence>
+                                                        <xsd:element name="type" type="xsd:string" minOccurs="0"/>
+                                                        <xsd:element name="content" type="xsd:string" minOccurs="0"/>
+                                                    </xsd:sequence>
+                                                </xsd:complexType>
+                                            </xsd:element>
+                                            <xsd:element name="Binary" minOccurs="0">
+                                                <xsd:complexType>
+                                                    <xsd:sequence>
+                                                        <xsd:element name="type" type="xsd:string" minOccurs="0"/>
+                                                        <xsd:element name="content" type="xsd:base64Binary" minOccurs="0"/>
+                                                    </xsd:sequence>
+                                                </xsd:complexType>
+                                            </xsd:element>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </restInputReferNode>
+                <restOutputReferNode>
+                    <xsd:element name="header">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="Server" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Location" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Allow" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Date" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Set-Cookie" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Pragma" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Content-Type" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Content-Length" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Content-Encoding" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Content-Range" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="Last-Modifie" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </restOutputReferNode>
+            </config>
+            <pd:inputBindings>
+                <ns:ActivityInput>
+                    <ns:Parameters>
+                        <Query>
+                            <lat>
+                                <xsl:value-of select="$adresse/features/geometry/coordinates[1]"/>
+                            </lat>
+                            <lon>
+                                <xsl:value-of select="$adresse/features/geometry/coordinates[2]"/>
+                            </lon>
+                            <appid>
+                                <xsl:value-of select="'44abd8df0035457e32e9297084c7b1d0'"/>
+                            </appid>
+                            <mode>
+                                <xsl:value-of select="'xml'"/>
+                            </mode>
+                        </Query>
+                    </ns:Parameters>
+                </ns:ActivityInput>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="get weather Error">
+            <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+            <pd:resourceType>ae.activities.throw</pd:resourceType>
+            <pd:x>798</pd:x>
+            <pd:y>285</pd:y>
+            <config>
+                <faultName/>
+            </config>
+            <pd:inputBindings>
+                <ns2:ActivityInput/>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="Parse XML">
+            <pd:type>com.tibco.plugin.xml.XMLParseActivity</pd:type>
+            <pd:resourceType>ae.activities.XMLParseActivity</pd:resourceType>
+            <pd:x>928</pd:x>
+            <pd:y>168</pd:y>
+            <config>
+                <inputStyle>text</inputStyle>
+                <xsdVersion>default</xsdVersion>
+                <validateOutput>false</validateOutput>
+                <term ref="pfx4:current"/>
+            </config>
+            <pd:inputBindings>
+                <xmlString>
+                    <xsl:value-of select="$get-weather/ns:RESTOutput/body/asciiContent"/>
+                </xmlString>
+            </pd:inputBindings>
+        </pd:activity>
+    </pd:group>
+    <pd:activity name="Parse JSON">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>534</pd:x>
+        <pd:y>218</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ActivityOutputEditor ref="pfx2:JSON"/>
+        </config>
+        <pd:inputBindings>
+            <ns:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$getAdrees/ns:RESTOutput/msg"/>
+                </jsonString>
+            </ns:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Logging">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>363</pd:x>
+        <pd:y>218</pd:y>
+        <config>
+            <processName>/ProcessDefinitions/Logging.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx3:LogInfo>
+                <pfx3:idtech>
+                    <xsl:value-of select="$_processContext/ns1:ProcessContext/ProcessId"/>
+                </pfx3:idtech>
+                <pfx3:idfonc>
+                    <xsl:value-of select="'unkown'"/>
+                </pfx3:idfonc>
+                <pfx3:status>
+                    <xsl:value-of select="'init'"/>
+                </pfx3:status>
+                <pfx3:logmessage>
+                    <xsl:value-of select="'N/A'"/>
+                </pfx3:logmessage>
+            </pfx3:LogInfo>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Activity get adress error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>200</pd:x>
+        <pd:y>401</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInput>
+                <xsl:if test="$_error_getAdrees/ActivityErrors/ns3:JSONRestException/msg">
+                    <message>
+                        <xsl:value-of select="$_error_getAdrees/ActivityErrors/ns3:JSONRestException/msg"/>
+                    </message>
+                </xsl:if>
+                <xsl:if test="$_error_getAdrees/ActivityErrors/ns3:JSONRestException/msgCode">
+                    <messageCode>
+                        <xsl:value-of select="$_error_getAdrees/ActivityErrors/ns3:JSONRestException/msgCode"/>
+                    </messageCode>
+                </xsl:if>
+            </ns2:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="CatchAll">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>1310</pd:x>
+        <pd:y>459</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <fault>localname=JSONParseException namespace=http://schemas.tibco.com/bw/plugins/xml/5.0/RESTJSONExceptions</fault>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="Logging-1">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>1308</pd:x>
+        <pd:y>221</pd:y>
+        <config>
+            <processName>/ProcessDefinitions/Logging.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx3:LogInfo>
+                <pfx3:idtech>
+                    <xsl:value-of select="$_processContext/ns1:ProcessContext/ProcessId"/>
+                </pfx3:idtech>
+                <pfx3:idfonc>
+                    <xsl:value-of select="'unkown'"/>
+                </pfx3:idfonc>
+                <pfx3:status>
+                    <xsl:value-of select="'Error'"/>
+                </pfx3:status>
+                <pfx3:logmessage>
+                    <xsl:value-of select="$_error/ns1:ErrorReport/Msg"/>
+                </pfx3:logmessage>
+            </pfx3:LogInfo>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Catch-1">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>1113</pd:x>
+        <pd:y>463</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <fault>localname=JSONParseException namespace=http://schemas.tibco.com/bw/plugins/xml/5.0/RESTJSONExceptions</fault>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="Logging-2">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>1112</pd:x>
+        <pd:y>341</pd:y>
+        <config>
+            <processName>/ProcessDefinitions/Logging.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx3:LogInfo>
+                <pfx3:idtech>
+                    <xsl:value-of select="$_processContext/ns1:ProcessContext/ProcessId"/>
+                </pfx3:idtech>
+                <pfx3:idfonc>
+                    <xsl:value-of select="'unkown'"/>
+                </pfx3:idfonc>
+                <pfx3:status>
+                    <xsl:value-of select="'Echec'"/>
+                </pfx3:status>
+                <pfx3:logmessage>
+                    <xsl:value-of select="$_error/ns1:ErrorReport/Msg"/>
+                </pfx3:logmessage>
+            </pfx3:LogInfo>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Parse json error">
+        <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
+        <pd:resourceType>ae.activities.throw</pd:resourceType>
+        <pd:x>536</pd:x>
+        <pd:y>401</pd:y>
+        <config>
+            <faultName/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInput>
+                <xsl:if test="$_error_Parse-JSON/ActivityErrors/ns3:JSONParseException/msg">
+                    <message>
+                        <xsl:value-of select="$_error_Parse-JSON/ActivityErrors/ns3:JSONParseException/msg"/>
+                    </message>
+                </xsl:if>
+                <xsl:if test="$_error_Parse-JSON/ActivityErrors/ns3:JSONParseException/msgCode">
+                    <messageCode>
+                        <xsl:value-of select="$_error_Parse-JSON/ActivityErrors/ns3:JSONParseException/msgCode"/>
+                    </messageCode>
+                </xsl:if>
+            </ns2:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>getAdrees</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>getAdrees</pd:from>
+        <pd:to>Logging</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>exists($getAdrees/ns:RESTOutput/StatusCode='200')</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Group</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Logging</pd:from>
+        <pd:to>Parse JSON</pd:to>
+        <pd:xpathDescription>initLog</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Parse JSON</pd:from>
+        <pd:to>Group</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>getAdrees</pd:from>
+        <pd:to>Activity get adress error</pd:to>
+        <pd:xpathDescription>Error</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>error</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>CatchAll</pd:from>
+        <pd:to>Logging-1</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Logging-1</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch-1</pd:from>
+        <pd:to>Logging-2</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Logging-2</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Parse JSON</pd:from>
+        <pd:to>Parse json error</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>error</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

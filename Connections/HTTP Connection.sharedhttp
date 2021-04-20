@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:httpSharedResource xmlns:ns0="www.tibco.com/shared/HTTPConnection">
+    <config>
+        <Host>%%lab/nomMachine%%</Host>
+        <serverType>HttpComponent</serverType>
+        <Port>%%lab/PortSoap%%</Port>
+        <useSsl>false</useSsl>
+        <HttpConnectionProperties>
+            <row>
+                <PropertyName>uriEncoding</PropertyName>
+                <PropertyValue/>
+                <PropertyDefaultValue/>
+            </row>
+            <row>
+                <PropertyName>compressableMimeType</PropertyName>
+                <PropertyValue/>
+                <PropertyDefaultValue>text/html,text/xml,text/plain</PropertyDefaultValue>
+            </row>
+            <row>
+                <PropertyName>compression</PropertyName>
+                <PropertyValue/>
+                <PropertyDefaultValue>off</PropertyDefaultValue>
+            </row>
+            <row>
+                <PropertyName>connectionTimeOut (ms)</PropertyName>
+                <PropertyValue/>
+                <PropertyDefaultValue>60000</PropertyDefaultValue>
+            </row>
+        </HttpConnectionProperties>
+        <ns1:ssl xmlns:ns1="http://www.tibco.com/xmlns/aemeta/services/2002">
+            <ns1:strongCipherSuitesOnly>true</ns1:strongCipherSuitesOnly>
+        </ns1:ssl>
+    </config>
+</ns0:httpSharedResource>

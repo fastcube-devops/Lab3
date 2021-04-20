@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.fastconnect.fr/BWDev/services/lab3" xmlns:pfx3="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" schemaLocation="/Schema/q.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd" schemaLocation="/Schema/schemaAllDataWeather.xsd"/>
+    <wsdl:import namespace="http://www.fastconnect.fr/BWDev/services/lab3" location="/Services/UnService/Contract/ApiRest_WSDLconcret.wsdl"/>
+    <pd:name>Services/UnService/UnitTest/Process Definition.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:q"/>
+    <pd:startX>151</pd:startX>
+    <pd:startY>64</pd:startY>
+    <pd:returnBindings>
+        <pfx3:current>
+            <pfx3:temperature>
+                <xsl:if test="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@value">
+                    <xsl:attribute name="value">
+                        <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@value"/>
+                    </xsl:attribute>
+                </xsl:if>
+                <xsl:if test="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@min">
+                    <xsl:attribute name="min">
+                        <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@min"/>
+                    </xsl:attribute>
+                </xsl:if>
+                <xsl:if test="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@max">
+                    <xsl:attribute name="max">
+                        <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@max"/>
+                    </xsl:attribute>
+                </xsl:if>
+                <xsl:if test="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@unit">
+                    <xsl:attribute name="unit">
+                        <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@unit"/>
+                    </xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature"/>
+            </pfx3:temperature>
+        </pfx3:current>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx3:current"/>
+    <pd:endX>450</pd:endX>
+    <pd:endY>64</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1618923527780</pd:targetNamespace>
+    <pd:activity name="SOAPRequestReply">
+        <pd:type>com.tibco.plugin.soap.SOAPSendReceiveActivity</pd:type>
+        <pd:resourceType>ae.activities.SOAPSendReceiveUI</pd:resourceType>
+        <pd:x>306</pd:x>
+        <pd:y>64</pd:y>
+        <config>
+            <timeout>0</timeout>
+            <soapAttachmentStyle>SwA</soapAttachmentStyle>
+            <timeoutType>Seconds</timeoutType>
+            <service>pfx2:intfApiRest-service</service>
+            <servicePort>intfwsApiRestEndpoint2</servicePort>
+            <operation>ApiRestOp</operation>
+            <soapAction>/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint2/ApiRestOp</soapAction>
+            <endpointURL>http://localhost:7575/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint2</endpointURL>
+            <authScheme>NONE</authScheme>
+        </config>
+        <pd:inputBindings>
+            <inputMessage>
+                <pfx:q>
+                    <xsl:value-of select="$Start/pfx:q"/>
+                </pfx:q>
+            </inputMessage>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>SOAPRequestReply</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>SOAPRequestReply</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>
