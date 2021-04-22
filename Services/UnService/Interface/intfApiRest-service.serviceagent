@@ -9,8 +9,6 @@
         <groups>
             <row isDefault="true" groupName="Default"/>
         </groups>
-        <wsdl namespace="http://www.fastconnect.fr/BWDev/services/lab3" embedWsdlComponents="true" embedSchemaComponents="true" embedJndiProperties="false"/>
-        <serviceChange>Tue Apr 20 14:57:27 CEST 2021</serviceChange>
         <interfaceImpl>
             <tab>
                 <tabName>portType</tabName>
@@ -32,7 +30,7 @@
                             <tabType>ep</tabType>
                             <config>
                                 <epBindings>
-                                    <row epName="intfwsApiRestEndpoint2" epType="soap">
+                                    <row epName="intfwsApiRestEndpoint1" epType="soap">
                                         <config>
                                             <epDetail>
                                                 <tab>
@@ -43,7 +41,7 @@
                                                         <transport>
                                                             <config>
                                                                 <useBasicAuthentication>false</useBasicAuthentication>
-                                                                <httpURI>/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint2</httpURI>
+                                                                <httpURI>/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint1</httpURI>
                                                             </config>
                                                         </transport>
                                                     </config>
@@ -58,7 +56,7 @@
                                                             <operation name="ApiRestOp">
                                                                 <general>
                                                                     <config>
-                                                                        <soapAction>/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint2/ApiRestOp</soapAction>
+                                                                        <soapAction>/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint1/ApiRestOp</soapAction>
                                                                         <operationStyle/>
                                                                         <soapUse>literal</soapUse>
                                                                         <inputNamespace/>
@@ -81,5 +79,6 @@
                 </config>
             </tab>
         </interfaceImpl>
+        <wsdl namespace="http://www.fastconnect.fr/BWDev/services/lab3" embedWsdlComponents="true" embedSchemaComponents="true" embedJndiProperties="false"/>
     </config>
 </serviceResource>

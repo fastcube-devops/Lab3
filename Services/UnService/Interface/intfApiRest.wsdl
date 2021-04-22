@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.fastconnect.fr/BWDev/services" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx0="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" xmlns:pfx1="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd" targetNamespace="http://www.fastconnect.fr/BWDev/services">
-    <import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" location="../../../Schema/q.xsd"/>
-    <import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd" location="../../../Schema/schemaAllDataWeather.xsd"/>
-    <message name="current">
-        <part element="pfx1:current" name="parameters"/>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.fastconnect.fr/BWDev/services" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pfx0="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd3" xmlns:pfx1="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd5" targetNamespace="http://www.fastconnect.fr/BWDev/services">
+    <import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd5" location="../../../Schema/schemaOutput.xsd"/>
+    <import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd3" location="../../../Schema/param.xsd"/>
+    <message name="JSON">
+        <part element="pfx1:JSON" name="parameters"/>
     </message>
     <message name="q">
         <part element="pfx0:q" name="parameters"/>
@@ -11,7 +11,7 @@
     <portType name="portType">
         <operation name="ApiRestOp">
             <input message="tns:q"/>
-            <output message="tns:current"/>
+            <output message="tns:JSON"/>
         </operation>
     </portType>
 </definitions>

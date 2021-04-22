@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:wsdlPfx="http://www.fastconnect.fr/BWDev/services" xmlns:pfx0="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" xmlns:pfx1="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd">
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:wsdlPfx="http://www.fastconnect.fr/BWDev/services" xmlns:pfx0="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd3" xmlns:pfx1="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd5">
     <wsdl:import namespace="http://www.fastconnect.fr/BWDev/services" location="/Services/UnService/Interface/intfApiRest.wsdl"/>
     <pd:name>Services/UnService/Interface/wsApiRest.process</pd:name>
     <pd:startName>Start</pd:startName>
@@ -7,19 +7,19 @@
     <pd:startX>150</pd:startX>
     <pd:startY>50</pd:startY>
     <pd:returnBindings>
-        <wsdlPfx:current>
+        <wsdlPfx:JSON>
             <parameters>
-                <xsl:copy-of select="$Call-Process/pfx1:current"/>
+                <xsl:copy-of select="$Call-Process/pfx1:JSON"/>
             </parameters>
-        </wsdlPfx:current>
+        </wsdlPfx:JSON>
     </pd:returnBindings>
     <pd:endName>End</pd:endName>
-    <pd:endType wsMsgRef="wsdlPfx:current"/>
+    <pd:endType wsMsgRef="wsdlPfx:JSON"/>
     <pd:endX>450</pd:endX>
     <pd:endY>50</pd:endY>
     <pd:errorSchemas/>
     <pd:processVariables/>
-    <pd:targetNamespace>http://www.fastconnect.fr/BWDev/services</pd:targetNamespace>
+    <pd:targetNamespace>http://xmlns.example.com/1619077290717</pd:targetNamespace>
     <pd:activity name="Call Process">
         <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
         <pd:resourceType>ae.process.subprocess</pd:resourceType>

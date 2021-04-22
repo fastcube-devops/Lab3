@@ -7,14 +7,18 @@
         </sharedArchive>
         <processArchive name="Process Archive">
             <resourceType>process.archive.resource</resourceType>
-            <authorProperty>faiza</authorProperty>
-            <processProperty/>
+            <authorProperty>Dev</authorProperty>
+            <processProperty>/ProcessDefinitions/ApiRest.process</processProperty>
         </processArchive>
         <versionProperty>1</versionProperty>
         <authorProperty>Dev</authorProperty>
         <addServiceSettableGvars>true</addServiceSettableGvars>
         <name>lab3</name>
-        <designer/>
+        <designer>
+            <lockedProperties/>
+            <fixedChildren/>
+            <resourceDescriptions/>
+        </designer>
         <fileLocationProperty>C:\Users\Dev\lab3.ear</fileLocationProperty>
     </enterpriseArchive>
 </Repository:repository>

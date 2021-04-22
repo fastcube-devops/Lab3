@@ -1,61 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.fastconnect.fr/BWDev/services/lab3" xmlns:pfx3="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd">
-    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/lab3/Schema/Schema2.xsd" schemaLocation="/Schema/q.xsd"/>
-    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd" schemaLocation="/Schema/schemaAllDataWeather.xsd"/>
-    <wsdl:import namespace="http://www.fastconnect.fr/BWDev/services/lab3" location="/Services/UnService/Contract/ApiRest_WSDLconcret.wsdl"/>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd3" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.fastconnect.fr/BWDev/services/lab3" xmlns:pfx3="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd5" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd3" schemaLocation="/Schema/param.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd5" schemaLocation="/Schema/schemaOutput.xsd"/>
+    <wsdl:import namespace="http://www.fastconnect.fr/BWDev/services/lab3" location="/Services/UnService/Contract/ApiRestWSDL.wsdl"/>
     <pd:name>Services/UnService/UnitTest/Process Definition.process</pd:name>
     <pd:startName>Start</pd:startName>
     <pd:startType ref="pfx:q"/>
-    <pd:startX>151</pd:startX>
+    <pd:startX>150</pd:startX>
     <pd:startY>64</pd:startY>
     <pd:returnBindings>
-        <pfx3:current>
-            <pfx3:temperature>
-                <xsl:if test="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@value">
-                    <xsl:attribute name="value">
-                        <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@value"/>
-                    </xsl:attribute>
+        <xsl:for-each select="$SOAPRequestReply/outputMessage/pfx3:JSON">
+            <pfx3:JSON>
+                <xsl:for-each select="pfx3:coord">
+                    <pfx3:coord>
+                        <xsl:if test="pfx3:lon">
+                            <pfx3:lon>
+                                <xsl:value-of select="pfx3:lon"/>
+                            </pfx3:lon>
+                        </xsl:if>
+                        <xsl:if test="pfx3:lat">
+                            <pfx3:lat>
+                                <xsl:value-of select="pfx3:lat"/>
+                            </pfx3:lat>
+                        </xsl:if>
+                    </pfx3:coord>
+                </xsl:for-each>
+                <xsl:for-each select="pfx3:weather">
+                    <pfx3:weather>
+                        <xsl:if test="pfx3:id">
+                            <pfx3:id>
+                                <xsl:value-of select="pfx3:id"/>
+                            </pfx3:id>
+                        </xsl:if>
+                        <xsl:if test="pfx3:main">
+                            <pfx3:main>
+                                <xsl:value-of select="pfx3:main"/>
+                            </pfx3:main>
+                        </xsl:if>
+                        <xsl:if test="pfx3:description">
+                            <pfx3:description>
+                                <xsl:value-of select="pfx3:description"/>
+                            </pfx3:description>
+                        </xsl:if>
+                        <xsl:if test="pfx3:icon">
+                            <pfx3:icon>
+                                <xsl:value-of select="pfx3:icon"/>
+                            </pfx3:icon>
+                        </xsl:if>
+                    </pfx3:weather>
+                </xsl:for-each>
+                <xsl:for-each select="pfx3:main">
+                    <pfx3:main>
+                        <xsl:if test="pfx3:temp">
+                            <pfx3:temp>
+                                <xsl:value-of select="pfx3:temp"/>
+                            </pfx3:temp>
+                        </xsl:if>
+                        <xsl:if test="pfx3:feels_like">
+                            <pfx3:feels_like>
+                                <xsl:value-of select="pfx3:feels_like"/>
+                            </pfx3:feels_like>
+                        </xsl:if>
+                        <xsl:if test="pfx3:temp_min">
+                            <pfx3:temp_min>
+                                <xsl:value-of select="pfx3:temp_min"/>
+                            </pfx3:temp_min>
+                        </xsl:if>
+                        <xsl:if test="pfx3:temp_max">
+                            <pfx3:temp_max>
+                                <xsl:value-of select="pfx3:temp_max"/>
+                            </pfx3:temp_max>
+                        </xsl:if>
+                        <xsl:if test="pfx3:pressure">
+                            <pfx3:pressure>
+                                <xsl:value-of select="pfx3:pressure"/>
+                            </pfx3:pressure>
+                        </xsl:if>
+                        <xsl:if test="pfx3:humidity">
+                            <pfx3:humidity>
+                                <xsl:value-of select="pfx3:humidity"/>
+                            </pfx3:humidity>
+                        </xsl:if>
+                    </pfx3:main>
+                </xsl:for-each>
+                <xsl:if test="pfx3:visibility">
+                    <pfx3:visibility>
+                        <xsl:value-of select="pfx3:visibility"/>
+                    </pfx3:visibility>
                 </xsl:if>
-                <xsl:if test="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@min">
-                    <xsl:attribute name="min">
-                        <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@min"/>
-                    </xsl:attribute>
-                </xsl:if>
-                <xsl:if test="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@max">
-                    <xsl:attribute name="max">
-                        <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@max"/>
-                    </xsl:attribute>
-                </xsl:if>
-                <xsl:if test="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@unit">
-                    <xsl:attribute name="unit">
-                        <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature/@unit"/>
-                    </xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="$SOAPRequestReply/outputMessage/pfx3:current/pfx3:temperature"/>
-            </pfx3:temperature>
-        </pfx3:current>
+                <xsl:for-each select="pfx3:sys">
+                    <pfx3:sys>
+                        <xsl:if test="pfx3:type">
+                            <pfx3:type>
+                                <xsl:value-of select="pfx3:type"/>
+                            </pfx3:type>
+                        </xsl:if>
+                        <xsl:if test="pfx3:id">
+                            <pfx3:id>
+                                <xsl:value-of select="pfx3:id"/>
+                            </pfx3:id>
+                        </xsl:if>
+                        <xsl:if test="pfx3:country">
+                            <pfx3:country>
+                                <xsl:value-of select="pfx3:country"/>
+                            </pfx3:country>
+                        </xsl:if>
+                        <xsl:if test="pfx3:sunrise">
+                            <pfx3:sunrise>
+                                <xsl:value-of select="pfx3:sunrise"/>
+                            </pfx3:sunrise>
+                        </xsl:if>
+                        <xsl:if test="pfx3:sunset">
+                            <pfx3:sunset>
+                                <xsl:value-of select="pfx3:sunset"/>
+                            </pfx3:sunset>
+                        </xsl:if>
+                    </pfx3:sys>
+                </xsl:for-each>
+            </pfx3:JSON>
+        </xsl:for-each>
     </pd:returnBindings>
     <pd:endName>End</pd:endName>
-    <pd:endType ref="pfx3:current"/>
+    <pd:endType ref="pfx3:JSON"/>
     <pd:endX>450</pd:endX>
     <pd:endY>64</pd:endY>
     <pd:errorSchemas/>
     <pd:processVariables/>
-    <pd:targetNamespace>http://xmlns.example.com/1618923527780</pd:targetNamespace>
+    <pd:targetNamespace>http://xmlns.example.com/1619077544637</pd:targetNamespace>
     <pd:activity name="SOAPRequestReply">
         <pd:type>com.tibco.plugin.soap.SOAPSendReceiveActivity</pd:type>
         <pd:resourceType>ae.activities.SOAPSendReceiveUI</pd:resourceType>
-        <pd:x>306</pd:x>
-        <pd:y>64</pd:y>
+        <pd:x>304</pd:x>
+        <pd:y>62</pd:y>
         <config>
             <timeout>0</timeout>
             <soapAttachmentStyle>SwA</soapAttachmentStyle>
             <timeoutType>Seconds</timeoutType>
             <service>pfx2:intfApiRest-service</service>
-            <servicePort>intfwsApiRestEndpoint2</servicePort>
+            <servicePort>intfwsApiRestEndpoint1</servicePort>
             <operation>ApiRestOp</operation>
-            <soapAction>/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint2/ApiRestOp</soapAction>
-            <endpointURL>http://localhost:7575/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint2</endpointURL>
+            <soapAction>/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint1/ApiRestOp</soapAction>
+            <endpointURL>http://localhost:7575/Services/UnService/Interface/intfApiRest-service.serviceagent/intfwsApiRestEndpoint1</endpointURL>
             <authScheme>NONE</authScheme>
         </config>
         <pd:inputBindings>
