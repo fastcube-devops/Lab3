@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<serviceResource xmlns:wsdl="http://www.example.com/1618918793744">
-    <ns0:import xmlns:ns0="http://schemas.xmlsoap.org/wsdl/" namespace="http://www.example.com/1618918793744" location="/Interface/intflab3_REST.wsdl"/>
+<serviceResource xmlns:wsdl="http://www.example.com/1619096680375">
+    <ns0:import xmlns:ns0="http://schemas.xmlsoap.org/wsdl/" namespace="http://www.example.com/1619096680375" location="/Interface/intflab3_REST.wsdl"/>
     <config>
+        <wsdl namespace="http://xmlns.example.com/1619096687742" embedWsdlComponents="true" embedSchemaComponents="true" embedJndiProperties="false"/>
         <class>com.tibco.bw.service.serviceAgent.ServiceServiceAgent</class>
         <name>intflab3_REST-service</name>
         <resourceType>service.definition</resourceType>
@@ -14,7 +15,7 @@
                 <tabName>portType</tabName>
                 <tabType>bw</tabType>
                 <config>
-                    <wsdlDetail location="/Interface/intflab3_REST.wsdl" portType="portType" ns="http://www.example.com/1618918793744"/>
+                    <wsdlDetail location="/Interface/intflab3_REST.wsdl" portType="portType" ns="http://www.example.com/1619096680375"/>
                     <detail>
                         <tab>
                             <tabName>service.definition.impl.tab.label</tabName>
@@ -30,7 +31,7 @@
                             <tabType>ep</tabType>
                             <config>
                                 <epBindings>
-                                    <row epName="intfwslab3_RESTEndpoint0" epType="soap">
+                                    <row epName="intfwslab3_RESTEndpoint6" epType="soap">
                                         <config>
                                             <epDetail>
                                                 <tab>
@@ -41,7 +42,7 @@
                                                         <transport>
                                                             <config>
                                                                 <useBasicAuthentication>false</useBasicAuthentication>
-                                                                <httpURI>/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint0</httpURI>
+                                                                <httpURI>/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint6</httpURI>
                                                             </config>
                                                         </transport>
                                                     </config>
@@ -56,7 +57,7 @@
                                                             <operation name="lab3_sp_RESTOp">
                                                                 <general>
                                                                     <config>
-                                                                        <soapAction>/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint0/lab3_sp_RESTOp</soapAction>
+                                                                        <soapAction>/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint6/lab3_sp_RESTOp</soapAction>
                                                                         <operationStyle/>
                                                                         <soapUse>literal</soapUse>
                                                                         <inputNamespace/>
@@ -79,6 +80,5 @@
                 </config>
             </tab>
         </interfaceImpl>
-        <wsdl namespace="http://xmlns.lab3.com/1618918807546" embedWsdlComponents="true" embedSchemaComponents="true" embedJndiProperties="false"/>
     </config>
 </serviceResource>

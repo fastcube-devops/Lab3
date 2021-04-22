@@ -1,0 +1,136 @@
+{
+    "type": "FeatureCollection",
+    "version": "draft",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.386898,
+                    48.761767
+                ]
+            },
+            "properties": {
+                "label": "104 Rue de la Résistance 94320 Thiais",
+                "score": 0.8789381818181817,
+                "housenumber": "104",
+                "id": "94073_8150_00104",
+                "name": "104 Rue de la Résistance",
+                "postcode": "94320",
+                "citycode": "94073",
+                "x": 654932.99,
+                "y": 6851470.74,
+                "city": "Thiais",
+                "context": "94, Val-de-Marne, Île-de-France",
+                "type": "housenumber",
+                "importance": 0.66832,
+                "street": "Rue de la Résistance"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    5.513364,
+                    47.082459
+                ]
+            },
+            "properties": {
+                "label": "104 Rue de la Résistance 39100 Dole",
+                "score": 0.8778572727272727,
+                "housenumber": "104",
+                "id": "39198_97gyty_00104",
+                "name": "104 Rue de la Résistance",
+                "postcode": "39100",
+                "citycode": "39198",
+                "x": 890658,
+                "y": 6667724.21,
+                "city": "Dole",
+                "context": "39, Jura, Bourgogne-Franche-Comté",
+                "type": "housenumber",
+                "importance": 0.65643,
+                "street": "Rue de la Résistance"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    3.247184,
+                    50.470915
+                ]
+            },
+            "properties": {
+                "label": "104 Rue de la Resistance 59310 Orchies",
+                "score": 0.8712672727272727,
+                "housenumber": "104",
+                "id": "59449_0577_00104",
+                "name": "104 Rue de la Resistance",
+                "postcode": "59310",
+                "citycode": "59449",
+                "x": 717574.38,
+                "y": 7041527.12,
+                "city": "Orchies",
+                "context": "59, Nord, Hauts-de-France",
+                "type": "housenumber",
+                "importance": 0.58394,
+                "street": "Rue de la Resistance"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.386286,
+                    45.438038
+                ]
+            },
+            "properties": {
+                "label": "Rue de la Résistance 42000 Saint-Étienne",
+                "score": 0.7435620553359683,
+                "id": "42218_7650",
+                "name": "Rue de la Résistance",
+                "postcode": "42000",
+                "citycode": "42218",
+                "x": 808378.82,
+                "y": 6483018.5,
+                "city": "Saint-Étienne",
+                "context": "42, Loire, Auvergne-Rhône-Alpes",
+                "type": "street",
+                "importance": 0.7444
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -4.530343,
+                    48.379188
+                ]
+            },
+            "properties": {
+                "label": "Rue de la Résistance 29200 Brest",
+                "score": 0.7424256916996047,
+                "id": "29019_4555",
+                "name": "Rue de la Résistance",
+                "postcode": "29200",
+                "citycode": "29019",
+                "x": 143253.79,
+                "y": 6835332.72,
+                "city": "Brest",
+                "context": "29, Finistère, Bretagne",
+                "type": "street",
+                "importance": 0.7319
+            }
+        }
+    ],
+    "attribution": "BAN",
+    "licence": "ETALAB-2.0",
+    "query": "104 rue de la resistance",
+    "limit": 5
+}

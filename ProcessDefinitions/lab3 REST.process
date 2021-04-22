@@ -1,244 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:pfx6="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/dataForma.xsd" xmlns:pfx2="http://www.tibco.com/schemas/lab/JSON_GEN_Schemas/Schema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:pfx3="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/addressSchema.xsd" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherDada.xsd" xmlns:pfx5="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherSchema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/pe/EngineTypes" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:ns4="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:ns3="http://www.tibco.com/schemas/Logging/Schemas/Schema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns5="http://schemas.tibco.com/bw/plugins/xml/5.0/xmlExceptions" xmlns:pd="http://xmlns.tibco.com/bw/process/2003">
+<pd:ProcessDefinition xmlns:pfx6="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" xmlns:pfx7="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" xmlns:pfx8="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/weather.xsd" xmlns:pfx="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/dataForma.xsd" xmlns:pfx9="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/weatherSchema.xsd" xmlns:pfx2="http://www.tibco.com/schemas/lab/JSON_GEN_Schemas/Schema.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:pfx3="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/addressSchema.xsd" xmlns:pfx4="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherDada.xsd" xmlns:pfx5="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherSchema.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/pe/EngineTypes" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/file" xmlns:ns4="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:ns3="http://www.tibco.com/schemas/Logging/Schemas/Schema.xsd" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns5="http://schemas.tibco.com/bw/plugins/xml/5.0/xmlExceptions" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx11="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd4" xmlns:pfx12="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd3" xmlns:pfx10="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/current.xsd">
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/dataForma.xsd" schemaLocation="/JSON_GEN_Schemas/dataForma.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/lab/JSON_GEN_Schemas/Schema.xsd" schemaLocation="/JSON_GEN_Schemas/adress_Costom.xsd"/>
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/addressSchema.xsd" schemaLocation="/JSON_GEN_Schemas/addressSchema.xsd"/>
-    <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherDada.xsd" schemaLocation="/JSON_GEN_Schemas/waetherDada.xsd"/>
     <xsd:import namespace="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" schemaLocation="/Schemas/Start.xsd"/>
     <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherSchema.xsd" schemaLocation="/JSON_GEN_Schemas/waetherSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/waetherDada.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/weatherSchema.xsd" schemaLocation="/JSON_GEN_Schemas/weatherSchema.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/ns/no_namespace_schema_location/JSON_GEN_Schemas/current.xsd" schemaLocation="/JSON_GEN_Schemas/current.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/lab3/Schema/Schema1.xsd4" schemaLocation="/Schemas/WeatherApiRest.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd3" schemaLocation="/JSON_GEN_Schemas/weather.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" schemaLocation="/JSON_GEN_Schemas/WeatherSchema.xsd"/>
     <pd:name>ProcessDefinitions/lab3 REST.process</pd:name>
     <pd:startName>Start</pd:startName>
     <pd:startType ref="pfx6:root"/>
     <pd:startX>41</pd:startX>
     <pd:startY>201</pd:startY>
     <pd:returnBindings>
-        <xsl:for-each select="$Parse-XML-result/current">
-            <current>
-                <xsl:for-each select="city">
-                    <city>
-                        <xsl:if test="@id">
-                            <xsl:attribute name="id">
-                                <xsl:value-of select="@id"/>
-                            </xsl:attribute>
-                        </xsl:if>
-                        <xsl:if test="@name">
-                            <xsl:attribute name="name">
-                                <xsl:value-of select="@name"/>
-                            </xsl:attribute>
-                        </xsl:if>
-                        <coord>
-                            <xsl:if test="coord/@lon">
-                                <xsl:attribute name="lon">
-                                    <xsl:value-of select="coord/@lon"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:if test="coord/@lat">
-                                <xsl:attribute name="lat">
-                                    <xsl:value-of select="coord/@lat"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:value-of select="coord"/>
-                        </coord>
-                        <country>
-                            <xsl:value-of select="country"/>
-                        </country>
-                        <timezone>
-                            <xsl:value-of select="timezone"/>
-                        </timezone>
-                        <sun>
-                            <xsl:if test="sun/@rise">
-                                <xsl:attribute name="rise">
-                                    <xsl:value-of select="sun/@rise"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:if test="sun/@set">
-                                <xsl:attribute name="set">
-                                    <xsl:value-of select="sun/@set"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:value-of select="sun"/>
-                        </sun>
-                    </city>
-                </xsl:for-each>
-                <temperature>
-                    <xsl:if test="temperature/@value">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="temperature/@value"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="temperature/@min">
-                        <xsl:attribute name="min">
-                            <xsl:value-of select="temperature/@min"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="temperature/@max">
-                        <xsl:attribute name="max">
-                            <xsl:value-of select="temperature/@max"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="temperature/@unit">
-                        <xsl:attribute name="unit">
-                            <xsl:value-of select="temperature/@unit"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="temperature"/>
-                </temperature>
-                <feels_like>
-                    <xsl:if test="feels_like/@value">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="feels_like/@value"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="feels_like/@unit">
-                        <xsl:attribute name="unit">
-                            <xsl:value-of select="feels_like/@unit"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="feels_like"/>
-                </feels_like>
-                <humidity>
-                    <xsl:if test="humidity/@value">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="humidity/@value"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="humidity/@unit">
-                        <xsl:attribute name="unit">
-                            <xsl:value-of select="humidity/@unit"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="humidity"/>
-                </humidity>
-                <pressure>
-                    <xsl:if test="pressure/@value">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="pressure/@value"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="pressure/@unit">
-                        <xsl:attribute name="unit">
-                            <xsl:value-of select="pressure/@unit"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="pressure"/>
-                </pressure>
-                <xsl:for-each select="wind">
-                    <wind>
-                        <speed>
-                            <xsl:if test="speed/@value">
-                                <xsl:attribute name="value">
-                                    <xsl:value-of select="speed/@value"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:if test="speed/@unit">
-                                <xsl:attribute name="unit">
-                                    <xsl:value-of select="speed/@unit"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:if test="speed/@name">
-                                <xsl:attribute name="name">
-                                    <xsl:value-of select="speed/@name"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:value-of select="speed"/>
-                        </speed>
-                        <gusts>
-                            <xsl:value-of select="gusts"/>
-                        </gusts>
-                        <direction>
-                            <xsl:if test="direction/@value">
-                                <xsl:attribute name="value">
-                                    <xsl:value-of select="direction/@value"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:if test="direction/@code">
-                                <xsl:attribute name="code">
-                                    <xsl:value-of select="direction/@code"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:if test="direction/@name">
-                                <xsl:attribute name="name">
-                                    <xsl:value-of select="direction/@name"/>
-                                </xsl:attribute>
-                            </xsl:if>
-                            <xsl:value-of select="direction"/>
-                        </direction>
-                    </wind>
-                </xsl:for-each>
-                <clouds>
-                    <xsl:if test="clouds/@value">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="clouds/@value"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="clouds/@name">
-                        <xsl:attribute name="name">
-                            <xsl:value-of select="clouds/@name"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="clouds"/>
-                </clouds>
-                <visibility>
-                    <xsl:if test="visibility/@value">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="visibility/@value"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="visibility"/>
-                </visibility>
-                <precipitation>
-                    <xsl:if test="precipitation/@mode">
-                        <xsl:attribute name="mode">
-                            <xsl:value-of select="precipitation/@mode"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="precipitation"/>
-                </precipitation>
-                <weather>
-                    <xsl:if test="weather/@number">
-                        <xsl:attribute name="number">
-                            <xsl:value-of select="weather/@number"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="weather/@value">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="weather/@value"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:if test="weather/@icon">
-                        <xsl:attribute name="icon">
-                            <xsl:value-of select="weather/@icon"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="weather"/>
-                </weather>
-                <lastupdate>
-                    <xsl:if test="lastupdate/@value">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="lastupdate/@value"/>
-                        </xsl:attribute>
-                    </xsl:if>
-                    <xsl:value-of select="lastupdate"/>
-                </lastupdate>
-            </current>
-        </xsl:for-each>
+        <xsl:copy-of select="$Parse-Weather-JSON/ns:ActivityOutputClass/pfx7:JSON"/>
     </pd:returnBindings>
     <pd:endName>End</pd:endName>
-    <pd:endType/>
-    <pd:endX>1228</pd:endX>
-    <pd:endY>206</pd:endY>
+    <pd:endType ref="pfx7:JSON"/>
+    <pd:endX>1231</pd:endX>
+    <pd:endY>210</pd:endY>
     <pd:errorSchemas/>
     <pd:processVariables/>
     <pd:targetNamespace>http://xmlns.example.com/1618321519140</pd:targetNamespace>
-    <pd:activity name="Parse JSON result">
+    <pd:activity name="Parse Address JSON">
         <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
         <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
         <pd:x>452</pd:x>
-        <pd:y>201</pd:y>
+        <pd:y>200</pd:y>
         <config>
             <SchemaType>xsdType</SchemaType>
             <BadgerfishCheck>false</BadgerfishCheck>
-            <ActivityOutputEditor ref="pfx3:JSON"/>
+            <ValidateOutputEnable>false</ValidateOutputEnable>
+            <ActivityOutputEditor ref="pfx10:JSON"/>
         </config>
         <pd:inputBindings>
             <ns:ActivityInputClass>
@@ -373,9 +170,9 @@
     <pd:group name="Group">
         <pd:type>com.tibco.pe.core.LoopGroup</pd:type>
         <pd:resourceType>ae.process.group</pd:resourceType>
-        <pd:x>585</pd:x>
-        <pd:y>60</pd:y>
-        <pd:width>370</pd:width>
+        <pd:x>586</pd:x>
+        <pd:y>61</pd:y>
+        <pd:width>380</pd:width>
         <pd:height>275</pd:height>
         <pd:collapsedWidth>57</pd:collapsedWidth>
         <pd:collapsedHeight>70</pd:collapsedHeight>
@@ -384,7 +181,7 @@
         <config>
             <pd:groupType>inputLoop</pd:groupType>
             <pd:serializable>false</pd:serializable>
-            <pd:over>$Parse-JSON-result/ns:ActivityOutputClass/JSON/features</pd:over>
+            <pd:over>$Parse-Address-JSON/ns:ActivityOutputClass/JSON/features</pd:over>
             <pd:iterationElementSlot>current</pd:iterationElementSlot>
             <pd:indexSlot>i</pd:indexSlot>
             <pd:activityOutputName/>
@@ -400,7 +197,7 @@
             <pd:conditionType>always</pd:conditionType>
         </pd:transition>
         <pd:transition>
-            <pd:from>Parse XML result</pd:from>
+            <pd:from>Parse Weather JSON</pd:from>
             <pd:to>end</pd:to>
             <pd:lineType>Multiple Bends</pd:lineType>
             <pd:lineColor>-16777216</pd:lineColor>
@@ -408,7 +205,7 @@
         </pd:transition>
         <pd:transition>
             <pd:from>REST GET Weather</pd:from>
-            <pd:to>Parse XML result</pd:to>
+            <pd:to>Parse Weather JSON</pd:to>
             <pd:xpathDescription>ok</pd:xpathDescription>
             <pd:lineType>Default</pd:lineType>
             <pd:lineColor>-16777216</pd:lineColor>
@@ -425,12 +222,12 @@
         <pd:activity name="REST GET Weather">
             <pd:type>com.tibco.plugin.json.activities.RestActivity</pd:type>
             <pd:resourceType>ae.activities.RestActivity</pd:resourceType>
-            <pd:x>683</pd:x>
+            <pd:x>684</pd:x>
             <pd:y>127</pd:y>
             <config>
                 <enableProtocolUI>None</enableProtocolUI>
                 <restMethodUI>GET</restMethodUI>
-                <restResponseType>XML</restResponseType>
+                <restResponseType>JSON</restResponseType>
                 <authChoiceUI>No Authentication</authChoiceUI>
                 <WADLPaths/>
                 <WADLBaseURL/>
@@ -448,7 +245,7 @@
                                             <xsd:element name="lat" type="xsd:string"/>
                                             <xsd:element name="lon" type="xsd:string"/>
                                             <xsd:element name="appid" type="xsd:string"/>
-                                            <xsd:element name="mode" type="xsd:string"/>
+                                            <xsd:element name="mode" type="xsd:string" minOccurs="0"/>
                                         </xsd:sequence>
                                     </xsd:complexType>
                                 </xsd:element>
@@ -545,35 +342,15 @@
                             <appid>
                                 <xsl:value-of select="&quot;5c77f220e87cf1913b36a3bd0d8c709a&quot;"/>
                             </appid>
-                            <mode>
-                                <xsl:value-of select="&quot;xml&quot;"/>
-                            </mode>
                         </Query>
                     </ns:Parameters>
                 </ns:ActivityInput>
             </pd:inputBindings>
         </pd:activity>
-        <pd:activity name="Parse XML result">
-            <pd:type>com.tibco.plugin.xml.XMLParseActivity</pd:type>
-            <pd:resourceType>ae.activities.XMLParseActivity</pd:resourceType>
-            <pd:x>837</pd:x>
-            <pd:y>127</pd:y>
-            <config>
-                <inputStyle>text</inputStyle>
-                <xsdVersion>default</xsdVersion>
-                <validateOutput>false</validateOutput>
-                <term ref="pfx5:current"/>
-            </config>
-            <pd:inputBindings>
-                <xmlString>
-                    <xsl:value-of select="$REST-GET-Weather/ns:RESTOutput/body/asciiContent"/>
-                </xmlString>
-            </pd:inputBindings>
-        </pd:activity>
         <pd:activity name="Generate Error HTTP GET weather">
             <pd:type>com.tibco.pe.core.GenerateErrorActivity</pd:type>
             <pd:resourceType>ae.activities.throw</pd:resourceType>
-            <pd:x>842</pd:x>
+            <pd:x>843</pd:x>
             <pd:y>263</pd:y>
             <config>
                 <faultName/>
@@ -587,6 +364,25 @@
                         <xsl:value-of select="$REST-GET-Weather/ns:RESTOutput/StatusCode"/>
                     </messageCode>
                 </ns4:ActivityInput>
+            </pd:inputBindings>
+        </pd:activity>
+        <pd:activity name="Parse Weather JSON">
+            <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+            <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+            <pd:x>848</pd:x>
+            <pd:y>132</pd:y>
+            <config>
+                <SchemaType>xsdType</SchemaType>
+                <BadgerfishCheck>false</BadgerfishCheck>
+                <ValidateOutputEnable>true</ValidateOutputEnable>
+                <ActivityOutputEditor ref="pfx7:JSON"/>
+            </config>
+            <pd:inputBindings>
+                <ns:ActivityInputClass>
+                    <jsonString>
+                        <xsl:value-of select="$REST-GET-Weather/ns:RESTOutput/body/asciiContent"/>
+                    </jsonString>
+                </ns:ActivityInputClass>
             </pd:inputBindings>
         </pd:activity>
     </pd:group>
@@ -741,7 +537,7 @@
     </pd:activity>
     <pd:transition>
         <pd:from>REST GET Address</pd:from>
-        <pd:to>Parse JSON result</pd:to>
+        <pd:to>Parse Address JSON</pd:to>
         <pd:xpathDescription>ok</pd:xpathDescription>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
@@ -749,7 +545,7 @@
         <pd:xpath>$REST-GET-Address/ns:RESTOutput/StatusCode=200</pd:xpath>
     </pd:transition>
     <pd:transition>
-        <pd:from>Parse JSON result</pd:from>
+        <pd:from>Parse Address JSON</pd:from>
         <pd:to>Generate Error adress not found</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-26368</pd:lineColor>
@@ -763,13 +559,13 @@
         <pd:conditionType>always</pd:conditionType>
     </pd:transition>
     <pd:transition>
-        <pd:from>Parse JSON result</pd:from>
+        <pd:from>Parse Address JSON</pd:from>
         <pd:to>Group</pd:to>
         <pd:xpathDescription>exists</pd:xpathDescription>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
         <pd:conditionType>xpath</pd:conditionType>
-        <pd:xpath>exists($Parse-JSON-result/ns:ActivityOutputClass/JSON/features[1]/type)</pd:xpath>
+        <pd:xpath>exists($Parse-Address-JSON/ns:ActivityOutputClass/JSON/features[1]/type)</pd:xpath>
     </pd:transition>
     <pd:transition>
         <pd:from>Catch all</pd:from>

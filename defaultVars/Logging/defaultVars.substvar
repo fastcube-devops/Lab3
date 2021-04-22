@@ -11,19 +11,19 @@
 		</globalVariable>
 		<globalVariable>
 			<name>jdbcpassword</name>
-			<value>user03</value>
+			<value>user02</value>
 			<deploymentSettable>true</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
-			<modTime>1618909228270</modTime>
+			<modTime>1618930343031</modTime>
 		</globalVariable>
 		<globalVariable>
 			<name>jdbcuser</name>
-			<value>user03</value>
+			<value>user02</value>
 			<deploymentSettable>true</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
-			<modTime>1618909228288</modTime>
+			<modTime>1618930343046</modTime>
 		</globalVariable>
 	</globalVariables>
 </repository>

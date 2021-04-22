@@ -1,0 +1,55 @@
+{
+    "coord": {
+        "lon": 2.4362,
+        "lat": 48.8642
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 290.5,
+        "feels_like": 289.18,
+        "temp_min": 290.15,
+        "temp_max": 291.15,
+        "pressure": 1015,
+        "humidity": 34,
+		"sea_level": 1013.00,
+		"grnd_level": 1013.25
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 3.09,
+        "deg": 110,
+		"gust": 5000.02
+    },
+    "clouds": {
+        "all": 0
+    },
+	"rain":{
+		"1h": 99.99,
+		"3h": 999.99
+	},
+	"snow":{
+		"1h": 99.99,
+		"3h": 999.99
+	},
+    "dt": 1618935366,
+    "sys": {
+        "type": 1,
+        "id": 6540,
+        "country": "FR",
+        "sunrise": 1618894159,
+        "sunset": 1618944514,
+		"message": "my messagesfsdfsdfsdf ezf"
+    },
+    "timezone": 7200,
+    "id": 2992090,
+    "name": "Montreuil",
+    "cod": 200
+}
