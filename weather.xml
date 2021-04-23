@@ -46,7 +46,7 @@
 		<value>23</value>
 		<code>NNE</code>
 		<name>North-northeast</name>
-	<direction />
+	</direction >
   </wind>
   <clouds>
 		<value>1</value>
