@@ -487,7 +487,7 @@
             </ns:ActivityInputClass>
         </pd:inputBindings>
     </pd:activity>
-    <pd:activity name="Logging">
+    <pd:activity name="Log initial">
         <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
         <pd:resourceType>ae.process.subprocess</pd:resourceType>
         <pd:x>363</pd:x>
@@ -504,10 +504,10 @@
                     <xsl:value-of select="'unkown'"/>
                 </pfx3:idfonc>
                 <pfx3:status>
-                    <xsl:value-of select="'init'"/>
+                    <xsl:value-of select="'initial'"/>
                 </pfx3:status>
                 <pfx3:logmessage>
-                    <xsl:value-of select="'N/A'"/>
+                    <xsl:value-of select="concat('process initial with id:', $_processContext/ns1:ProcessContext/ProcessId)"/>
                 </pfx3:logmessage>
             </pfx3:LogInfo>
         </pd:inputBindings>
@@ -547,7 +547,7 @@
         </config>
         <pd:inputBindings/>
     </pd:activity>
-    <pd:activity name="Logging-1">
+    <pd:activity name="Log error all">
         <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
         <pd:resourceType>ae.process.subprocess</pd:resourceType>
         <pd:x>1307</pd:x>
@@ -583,7 +583,7 @@
         </config>
         <pd:inputBindings/>
     </pd:activity>
-    <pd:activity name="Logging-2">
+    <pd:activity name="Log error specific">
         <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
         <pd:resourceType>ae.process.subprocess</pd:resourceType>
         <pd:x>1194</pd:x>
@@ -643,6 +643,31 @@
             <xsl:copy-of select="$Parse-JSON-1/ns:ActivityOutputClass/JSON"/>
         </pd:inputBindings>
     </pd:activity>
+    <pd:activity name="success">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>1138</pd:x>
+        <pd:y>115</pd:y>
+        <config>
+            <processName>/ProcessDefinitions/Logging.process</processName>
+        </config>
+        <pd:inputBindings>
+            <pfx3:LogInfo>
+                <pfx3:idtech>
+                    <xsl:value-of select="$_processContext/ns1:ProcessContext/ProcessId"/>
+                </pfx3:idtech>
+                <pfx3:idfonc>
+                    <xsl:value-of select="'unkown'"/>
+                </pfx3:idfonc>
+                <pfx3:status>
+                    <xsl:value-of select="'Succes'"/>
+                </pfx3:status>
+                <pfx3:logmessage>
+                    <xsl:value-of select="concat('Process executed with success id:',$_processContext/ns1:ProcessContext/ProcessId)"/>
+                </pfx3:logmessage>
+            </pfx3:LogInfo>
+        </pd:inputBindings>
+    </pd:activity>
     <pd:transition>
         <pd:from>Start</pd:from>
         <pd:to>getAdrees</pd:to>
@@ -652,14 +677,14 @@
     </pd:transition>
     <pd:transition>
         <pd:from>getAdrees</pd:from>
-        <pd:to>Logging</pd:to>
+        <pd:to>Log initial</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
         <pd:conditionType>xpath</pd:conditionType>
         <pd:xpath>$getAdrees/ns:RESTOutput/StatusCode='200'</pd:xpath>
     </pd:transition>
     <pd:transition>
-        <pd:from>Logging</pd:from>
+        <pd:from>Log initial</pd:from>
         <pd:to>Parse JSON</pd:to>
         <pd:xpathDescription>initLog</pd:xpathDescription>
         <pd:lineType>Default</pd:lineType>
@@ -684,13 +709,13 @@
     </pd:transition>
     <pd:transition>
         <pd:from>CatchAll</pd:from>
-        <pd:to>Logging-1</pd:to>
+        <pd:to>Log error all</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
         <pd:conditionType>always</pd:conditionType>
     </pd:transition>
     <pd:transition>
-        <pd:from>Logging-1</pd:from>
+        <pd:from>Log error all</pd:from>
         <pd:to>End</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
@@ -698,13 +723,13 @@
     </pd:transition>
     <pd:transition>
         <pd:from>Catch-1</pd:from>
-        <pd:to>Logging-2</pd:to>
+        <pd:to>Log error specific</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
         <pd:conditionType>always</pd:conditionType>
     </pd:transition>
     <pd:transition>
-        <pd:from>Logging-2</pd:from>
+        <pd:from>Log error specific</pd:from>
         <pd:to>End</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
@@ -726,6 +751,13 @@
     </pd:transition>
     <pd:transition>
         <pd:from>Map Data</pd:from>
+        <pd:to>success</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>success</pd:from>
         <pd:to>End</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>

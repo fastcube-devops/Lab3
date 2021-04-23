@@ -4,13 +4,16 @@
         <sharedArchive name="Shared Archive">
             <resourceType>shared.archive.resource</resourceType>
             <authorProperty>Dev</authorProperty>
+            <sharedResources>/Services/UnService/Interface/intfApiRest-service.serviceagent</sharedResources>
+            <sharedFiles/>
+            <sharedJarFiles/>
         </sharedArchive>
         <processArchive name="Process Archive">
             <resourceType>process.archive.resource</resourceType>
             <authorProperty>Dev</authorProperty>
             <processProperty>/ProcessDefinitions/ApiRest.process</processProperty>
         </processArchive>
-        <versionProperty>1</versionProperty>
+        <versionProperty>2</versionProperty>
         <authorProperty>Dev</authorProperty>
         <addServiceSettableGvars>true</addServiceSettableGvars>
         <name>lab3</name>
