@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Created by TIBCO WSDL-->
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1619096687742" xmlns:ns0="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" xmlns:ns1="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://xmlns.example.com/1619096687742">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.example.com/1619191883442" xmlns:ns0="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" xmlns:ns1="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://xmlns.example.com/1619191883442">
     <wsdl:types>
         <xs:schema xmlns="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
             <xs:complexType name="JSONType">
@@ -80,8 +80,8 @@
         </xs:schema>
     </wsdl:types>
     <wsdl:service name="intflab3_REST-service">
-        <wsdl:port name="intfwslab3_RESTEndpoint6" binding="tns:intfwslab3_RESTEndpoint6Binding">
-            <soap:address location="http://localhost:7575/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint6"/>
+        <wsdl:port name="intfwslab3_RESTEndpoint0" binding="tns:intfwslab3_RESTEndpoint0Binding">
+            <soap:address location="http://localhost:7575/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint0"/>
         </wsdl:port>
     </wsdl:service>
     <wsdl:portType name="portType">
@@ -90,10 +90,10 @@
             <wsdl:output message="tns:JSON"/>
         </wsdl:operation>
     </wsdl:portType>
-    <wsdl:binding name="intfwslab3_RESTEndpoint6Binding" type="tns:portType">
+    <wsdl:binding name="intfwslab3_RESTEndpoint0Binding" type="tns:portType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="lab3_sp_RESTOp">
-            <soap:operation style="document" soapAction="/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint6/lab3_sp_RESTOp"/>
+            <soap:operation style="document" soapAction="/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint0/lab3_sp_RESTOp"/>
             <wsdl:input>
                 <soap:body use="literal" parts="parameters"/>
             </wsdl:input>

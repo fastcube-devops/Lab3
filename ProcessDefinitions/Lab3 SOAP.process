@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx6="http://xmlns.example.com/1619095826287" xmlns:pfx7="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" xmlns:pfx8="http://xmlns.example.com/1619096687742" xmlns:pfx="http://xmlns.lab3.com/1618918807546" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.example.com/1618918793744" xmlns:pfx3="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" xmlns:pfx4="http://xmlns.example.com/1619018351572" xmlns:pfx5="http://xmlns.example.com/1619086553657">
+<pd:ProcessDefinition xmlns:pfx6="http://xmlns.example.com/1619095826287" xmlns:pfx7="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" xmlns:pfx8="http://xmlns.example.com/1619096687742" xmlns:pfx="http://xmlns.lab3.com/1618918807546" xmlns:pfx9="http://xmlns.example.com/1619189668634" xmlns:pfx2="http://www.example.com/1618918793744" xmlns:pfx3="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" xmlns:pfx4="http://xmlns.example.com/1619018351572" xmlns:pfx5="http://xmlns.example.com/1619086553657" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx11="http://xmlns.example.com/1619191036770" xmlns:pfx12="http://xmlns.example.com/1619191883442" xmlns:pfx10="http://xmlns.example.com/1619190464397">
     <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/Lab3/Schemas/Schema.xsd" schemaLocation="/Schemas/Start.xsd"/>
     <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://www.tibco.com/schemas/Lab3/JSON_GEN_Schemas/Schema.xsd" schemaLocation="/JSON_GEN_Schemas/WeatherSchema.xsd"/>
     <wsdl:import namespace="http://xmlns.lab3.com/1618918807546"/>
     <wsdl:import namespace="http://www.example.com/1618918793744"/>
-    <wsdl:import namespace="http://xmlns.example.com/1619096687742" location="/contract/wsdl_contrat.wsdl"/>
+    <wsdl:import namespace="http://xmlns.example.com/1619189668634"/>
+    <wsdl:import namespace="http://xmlns.example.com/1619190464397"/>
+    <wsdl:import namespace="http://xmlns.example.com/1619191036770"/>
+    <wsdl:import namespace="http://xmlns.example.com/1619191883442" location="/contract/contrat.wsdl"/>
     <pd:name>ProcessDefinitions/Lab3 SOAP.process</pd:name>
     <pd:startName>Start</pd:startName>
     <pd:startType ref="pfx3:root"/>
@@ -177,8 +180,8 @@
     </pd:returnBindings>
     <pd:endName>End</pd:endName>
     <pd:endType ref="pfx7:JSON"/>
-    <pd:endX>553</pd:endX>
-    <pd:endY>218</pd:endY>
+    <pd:endX>550</pd:endX>
+    <pd:endY>215</pd:endY>
     <pd:errorSchemas/>
     <pd:processVariables/>
     <pd:targetNamespace>http://xmlns.example.com/1618919131098</pd:targetNamespace>
@@ -191,11 +194,11 @@
             <timeout>0</timeout>
             <soapAttachmentStyle>SwA</soapAttachmentStyle>
             <timeoutType>Seconds</timeoutType>
-            <service>pfx8:intflab3_REST-service</service>
-            <servicePort>intfwslab3_RESTEndpoint6</servicePort>
+            <service>pfx12:intflab3_REST-service</service>
+            <servicePort>intfwslab3_RESTEndpoint0</servicePort>
             <operation>lab3_sp_RESTOp</operation>
-            <soapAction>/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint6/lab3_sp_RESTOp</soapAction>
-            <endpointURL>http://localhost:7575/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint6</endpointURL>
+            <soapAction>/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint0/lab3_sp_RESTOp</soapAction>
+            <endpointURL>http://localhost:7575/Interface/intflab3_REST-service.serviceagent/intfwslab3_RESTEndpoint0</endpointURL>
             <authScheme>NONE</authScheme>
             <useProxy>false</useProxy>
             <requireBasicAuth>false</requireBasicAuth>

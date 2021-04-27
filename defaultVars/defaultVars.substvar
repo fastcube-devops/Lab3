@@ -129,5 +129,13 @@
 			<type>String</type>
 			<modTime>1618320961041</modTime>
 		</globalVariable>
+		<globalVariable>
+			<name>localWeather</name>
+			<value>C:\Users\Dev\Documents\repos\Lab3\local\</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1619424805282</modTime>
+		</globalVariable>
 	</globalVariables>
 </repository>

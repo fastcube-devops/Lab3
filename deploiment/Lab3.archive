@@ -4,14 +4,14 @@
         <sharedArchive name="Shared Archive">
             <resourceType>shared.archive.resource</resourceType>
             <authorProperty>Dev</authorProperty>
-            <sharedResources>/Interface/intflab3_REST-service.serviceagent</sharedResources>
+            <sharedResources/>
             <sharedFiles/>
             <sharedJarFiles/>
         </sharedArchive>
         <processArchive name="Process SOAP">
             <resourceType>process.archive.resource</resourceType>
             <authorProperty>Dev</authorProperty>
-            <processProperty>/Interface/wslab3_REST.process</processProperty>
+            <processProperty/>
         </processArchive>
         <versionProperty>4</versionProperty>
         <authorProperty>Dev</authorProperty>
